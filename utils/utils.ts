@@ -1,3 +1,4 @@
+import { Ticket } from "@/components/card/card.type";
 import {
   PRIORITY,
   STATUS,
@@ -15,6 +16,8 @@ type GetGroupingBy = (
   users: { id: string; name: string; available: boolean }[]
 ) => Status | Priority | User | undefined;
 
+type SortedTicketByPriority = (tickets: Ticket[], sortBy: string) => Ticket[];
+
 export const getGroupingBy: GetGroupingBy = (currGrouping, users) => {
   if (currGrouping === STATUS) {
     return statusGrouping;
@@ -22,5 +25,17 @@ export const getGroupingBy: GetGroupingBy = (currGrouping, users) => {
     return priorityGrouping;
   } else if (currGrouping === USER) {
     return users?.map(({ name }) => name);
+  }
+};
+
+export const sortTicketsByPriority: SortedTicketByPriority = (
+  tickets,
+  sortBy
+) => {
+  console.log(sortBy);
+  if (sortBy === PRIORITY) {
+    return tickets?.sort((a, b) => b?.priority - a?.priority);
+  } else {
+    return tickets?.sort((a, b) => a?.priority - b?.priority);
   }
 };

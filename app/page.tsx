@@ -28,8 +28,6 @@ export default function Home() {
     fetchData();
   }, []);
 
-  console.log(storeData);
-
   return (
     <main>
       <div>
@@ -39,10 +37,6 @@ export default function Home() {
         <Container>
           <div className="grid grid-cols-5 gap-4 ">
             <GridItems />
-            {/* <GridItems />
-            <GridItems />
-            <GridItems />
-            <GridItems /> */}
           </div>
         </Container>
       </div>

@@ -4,7 +4,7 @@ export type Ticket = {
   tag?: string[];
   userId?: string;
   status?: string;
-  priority?: number;
+  priority: number;
 };
 
 export interface cardProps {

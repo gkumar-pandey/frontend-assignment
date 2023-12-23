@@ -13,6 +13,7 @@ import {
 import Image from "next/image";
 import { Avatar } from "../avatar/Avatar";
 import { Card } from "../card/Card";
+import { sortTicketsByPriority } from "@/utils/utils";
 
 export const GridItems = () => {
   return (
@@ -40,8 +41,10 @@ const TicketGrouping = () => {
 
 const TicketGroupingByStatus = () => {
   const {
-    storeData: { tickets },
+    storeData: { tickets, filter },
   } = useStore((state) => state);
+
+  const sortedTickets = sortTicketsByPriority(tickets, filter.orderingBy);
 
   return statusGrouping.map((ele, idx) => (
     <div>
@@ -58,9 +61,9 @@ const TicketGroupingByStatus = () => {
         </div>
       </div>
       <div>
-        {tickets?.map((ticket, idx) => {
+        {sortedTickets?.map((ticket, idx) => {
           if (
-            ticket.status.toLocaleLowerCase() === ele.title.toLocaleLowerCase()
+            ticket.status?.toLocaleLowerCase() === ele.title.toLocaleLowerCase()
           ) {
             return <Card {...ticket} />;
           }
@@ -72,8 +75,12 @@ const TicketGroupingByStatus = () => {
 
 const TicketGroupingByPriority = () => {
   const {
-    storeData: { tickets },
+    storeData: {
+      tickets,
+      filter: { orderingBy },
+    },
   } = useStore((state) => state);
+  const sortedTickets = sortTicketsByPriority(tickets, orderingBy);
   return priorityGrouping.map((ele, idx) => (
     <div>
       <div key={idx} className="flex items-center h-[8vh] ">
@@ -89,7 +96,7 @@ const TicketGroupingByPriority = () => {
         </div>
       </div>
       <div>
-        {tickets.map((ticket, idx) => {
+        {sortedTickets.map((ticket, idx) => {
           if (ticket.priority === ele.priorityLevel) {
             return <Card {...ticket} />;
           }
@@ -101,13 +108,18 @@ const TicketGroupingByPriority = () => {
 
 const TicketGroupingByUsers = () => {
   const {
-    storeData: { users, tickets },
+    storeData: {
+      users,
+      tickets,
+      filter: { orderingBy },
+    },
   } = useStore((state) => state);
   const usersGrouping = users.map((ele, idx) => ({
     avatar: <Avatar userName={ele.name} />,
     name: ele.name,
     userId: ele.id,
   }));
+  const sortedTickets = sortTicketsByPriority(tickets, orderingBy);
 
   return usersGrouping.map((ele, idx) => (
     <div>
@@ -124,7 +136,7 @@ const TicketGroupingByUsers = () => {
         </div>
       </div>
       <div>
-        {tickets.map((ticket, idx) => {
+        {sortedTickets.map((ticket, idx) => {
           if (ticket.userId === ele.userId) {
             return <Card {...ticket} />;
           }
