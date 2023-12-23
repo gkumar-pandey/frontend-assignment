@@ -80,8 +80,8 @@ const TicketGroupingByPriority = () => {
   } = useStore((state) => state);
   const sortedTickets = sortTicketsByPriority(tickets, orderingBy);
   return priorityGrouping.map((ele, idx) => (
-    <div>
-      <div key={idx} className="flex items-center h-[8vh] ">
+    <div key={idx}>
+      <div className="flex items-center h-[8vh] ">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
             <Image src={ele.icon} alt={`${ele.title} svg icon`} />
@@ -120,8 +120,8 @@ const TicketGroupingByUsers = () => {
   const sortedTickets = sortTicketsByPriority(tickets, orderingBy);
 
   return usersGrouping.map((ele, idx) => (
-    <div>
-      <div key={idx} className="flex items-center h-[8vh] ">
+    <div key={idx}>
+      <div className="flex items-center h-[8vh] ">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
             {ele.avatar}
