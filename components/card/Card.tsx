@@ -22,13 +22,13 @@ export const Card: FC<Ticket> = ({
 }) => {
   return (
     <div className="bg-white py-3 px-5 rounded my-2 ">
-      <CartTitle id={id} userId={userId} />
+      <CardTitle id={id} userId={userId} priority={priority} />
       <CardBody status={status} title={title} tag={tag} priority={priority} />
     </div>
   );
 };
 
-const CartTitle: FC<Ticket> = ({ id, userId }) => {
+const CardTitle: FC<Ticket> = ({ id, userId }) => {
   const {
     storeData: {
       users,
