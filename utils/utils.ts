@@ -32,7 +32,6 @@ export const sortTicketsByPriority: SortedTicketByPriority = (
   tickets,
   sortBy
 ) => {
-  console.log(sortBy);
   if (sortBy === PRIORITY) {
     return tickets?.sort((a, b) => b?.priority - a?.priority);
   } else {

@@ -1,5 +1,3 @@
-import { FC } from "react";
-import { GroupingTitleProps } from "./grouping.type";
 import { IoMdAdd } from "react-icons/io";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { useStore } from "@/store/store";
@@ -47,8 +45,8 @@ const TicketGroupingByStatus = () => {
   const sortedTickets = sortTicketsByPriority(tickets, filter.orderingBy);
 
   return statusGrouping.map((ele, idx) => (
-    <div>
-      <div key={idx} className="flex items-center h-[8vh] ">
+    <div key={idx}>
+      <div className="flex items-center h-[8vh] ">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
             <Image src={ele.icon} alt={`${ele.title} svg icon`} />
@@ -65,7 +63,7 @@ const TicketGroupingByStatus = () => {
           if (
             ticket.status?.toLocaleLowerCase() === ele.title.toLocaleLowerCase()
           ) {
-            return <Card {...ticket} />;
+            return <Card key={ticket.id} {...ticket} />;
           }
         })}
       </div>
@@ -98,7 +96,7 @@ const TicketGroupingByPriority = () => {
       <div>
         {sortedTickets.map((ticket, idx) => {
           if (ticket.priority === ele.priorityLevel) {
-            return <Card {...ticket} />;
+            return <Card key={ticket.id} {...ticket} />;
           }
         })}
       </div>
@@ -138,7 +136,7 @@ const TicketGroupingByUsers = () => {
       <div>
         {sortedTickets.map((ticket, idx) => {
           if (ticket.userId === ele.userId) {
-            return <Card {...ticket} />;
+            return <Card key={ticket.id} {...ticket} />;
           }
         })}
       </div>
