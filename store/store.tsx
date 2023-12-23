@@ -24,7 +24,8 @@ interface Store {
   storeData: storeData;
   addUser: (users: User[]) => void;
   addTickets: (tickets: Ticket[]) => void;
-  //   updateFilter: (filter: any) => void;
+  setGrouping: (value: string) => void;
+  setOrdering: (value: string) => void;
 }
 
 const useStore = create<Store>()((set) => ({
@@ -32,14 +33,28 @@ const useStore = create<Store>()((set) => ({
     users: [],
     tickets: [],
     filter: {
-      groupingBy: "",
-      orderingBy: "",
+      groupingBy: "STATUS",
+      orderingBy: "TITLE",
     },
   },
   addUser: (users) =>
     set((state) => ({ storeData: { ...state.storeData, users: users } })),
   addTickets: (tickets) =>
     set((state) => ({ storeData: { ...state.storeData, tickets: tickets } })),
+  setGrouping: (value) =>
+    set((state) => ({
+      storeData: {
+        ...state.storeData,
+        filter: { ...state.storeData.filter, groupingBy: value },
+      },
+    })),
+  setOrdering: (value) =>
+    set((state) => ({
+      storeData: {
+        ...state.storeData,
+        filter: { ...state.storeData.filter, orderingBy: value },
+      },
+    })),
 }));
 
 export { useStore };

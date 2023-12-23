@@ -21,11 +21,28 @@ export const statusGrouping = [
 ];
 
 export const priorityGrouping = [
-  { title: "No Priority", icon: noPrioritySvg },
-  { title: "Low", icon: lowSvg },
-  { title: "Medium", icon: mediumSvg },
-  { title: "High", icon: highSvg },
-  { title: "Urgent", icon: urgetSvg },
+  { title: "No Priority", icon: noPrioritySvg, priorityLevel: 0 },
+  { title: "Low", icon: lowSvg, priorityLevel: 1 },
+  { title: "Medium", icon: mediumSvg, priorityLevel: 2 },
+  { title: "High", icon: highSvg, priorityLevel: 3 },
+  { title: "Urgent", icon: urgetSvg, priorityLevel: 4 },
+];
+
+// Constants
+export const USER = "USER";
+export const STATUS = "STATUS";
+export const PRIORITY = "PRIORITY";
+export const TITLE = "TITLE";
+
+export const groupingMenuItems = [
+  { text: "Status", value: STATUS },
+  { text: "User", value: USER },
+  { text: "Priority", value: PRIORITY },
+];
+
+export const orderingMenuItems = [
+  { text: "Title", value: TITLE },
+  { text: "Priority", value: PRIORITY },
 ];
 
 export { featureSvg };

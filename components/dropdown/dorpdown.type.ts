@@ -1,6 +1,11 @@
 import React from "react";
 
-export interface DropDownMenuItemProps {
-    text? : string;
-    buttonMenu? : React.ReactNode;
+export interface DropDownMenuItemsProps {
+  text?: string;
+  menuItems?: {
+    text: string;
+    value: string;
+  }[];
+  onSelect: (value: string) => void;
+  currSelectedValue: string;
 }

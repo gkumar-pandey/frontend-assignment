@@ -10,17 +10,19 @@ import { DisplayBtnDropDown } from "../dropdown/Dropdown";
 export const DisplayButton = () => {
   const [showDropDown, setShowDropDown] = useState(false);
   return (
-    <button
-      onClick={(e) => setShowDropDown(!showDropDown)}
-      className="flex items-center border border-gray-300 rounded px-2   shadow "
-    >
-      <MdOutlineTune />
-      <span className="px-2">Display</span>
-      <span>
-        <IoIosArrowDown />
-      </span>
+    <>
+      <button
+        onClick={(e) => setShowDropDown(!showDropDown)}
+        className="flex items-center border border-gray-300 rounded px-2   shadow "
+      >
+        <MdOutlineTune />
+        <span className="px-2">Display</span>
+        <span>
+          <IoIosArrowDown />
+        </span>
+      </button>
       {showDropDown && <DisplayBtnDropDown />}
-    </button>
+    </>
   );
 };
 
