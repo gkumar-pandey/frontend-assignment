@@ -6,7 +6,7 @@ import { useStore } from "@/store/store";
 
 export const DisplayBtnDropDown = () => {
   return (
-    <div className="absolute left-8 top-16 border shadow py-4 px-6 w-72 rounded bg-white  ">
+    <div className="absolute border border-gray-500 left-8 top-16 py-4 px-6 w-72 z-10 card-box-shadow rounded bg-white dark:bg-[color:var(--secondary-bg-dark-color)] ">
       <DispalyBtnDropDownMenu />
     </div>
   );
@@ -56,7 +56,7 @@ const DropDownMenuItems: FC<DropDownMenuItemsProps> = ({
       <select
         onChange={(e) => onSelect(e.target.value)}
         value={currSelectedValue}
-        className="border border-gray-300 bg-white focus:outline-none rounded cursor-pointer "
+        className="border border-gray-300 bg-white dark:text-white dark:bg-gray-900 focus:outline-none rounded cursor-pointer "
       >
         {menuItems?.map((ele, idx) => (
           <option value={ele.value} key={idx}>
