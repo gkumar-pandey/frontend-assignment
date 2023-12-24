@@ -31,7 +31,7 @@ export default function Home() {
       <div>
         <Navbar />
       </div>
-      <div className="bg-gray-100 h-screen">
+      <div className="bg-gray-100 min-h-screen dark:text-white dark:bg-[color:var(--primary-bg-dark-color)] ">
         <Container>
           <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4 ">
             <GridItems />

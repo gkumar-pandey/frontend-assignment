@@ -21,7 +21,7 @@ export const Card: FC<Ticket> = ({
   userId,
 }) => {
   return (
-    <div className="bg-white py-3 px-5 rounded my-2 ">
+    <div className="bg-white border border-gray-500 py-3 px-5 rounded my-4 card-box-shadow dark:text-white dark:bg-[color:var(--secondary-bg-dark-color)] ">
       <CardTitle id={id} userId={userId} priority={priority} />
       <CardBody status={status} title={title} tag={tag} priority={priority} />
     </div>
@@ -74,7 +74,7 @@ const CardBody: FC<cardBodyProps> = ({ status, title, tag, priority }) => {
               return (
                 item.priorityLevel == priority && (
                   <button
-                    className="border rounded flex items-center justify-center"
+                    className="border border-gray-500 rounded flex items-center justify-center"
                     key={idx}
                   >
                     <Image src={item.icon} alt="priority-icon" />
@@ -87,7 +87,7 @@ const CardBody: FC<cardBodyProps> = ({ status, title, tag, priority }) => {
           {tag?.map((tag, idx) => (
             <button
               key={idx}
-              className="border flex items-center gap-2 rounded px-1 text-sm text-gray-500 relative "
+              className="border border-gray-500 flex items-center gap-2 rounded px-1 text-sm text-gray-500  relative "
             >
               <Image
                 src={featureSvg}
